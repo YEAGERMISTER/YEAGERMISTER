@@ -22,3 +22,86 @@ H = Point(-1,50)
 
 print(H.x)
 print(H.y)
+
+import sys
+
+class Flight():
+    def __init__(self,capacity):
+        self.capacity = capacity
+        self.passengers = []
+
+    def open_seats(self):
+      return self.capacity - len(self.passengers)
+
+    def add_passenger(self,name):
+       if self.open_seats() > 0:
+          self.passengers.append(name)
+          return True
+
+flight = Flight(3)
+    
+people = ["Ray","Wyatt","Jones","Angela","Aaron"]
+
+for person in people:
+    success = flight.add_passenger(person)
+
+    if success:
+        print(f'Added {person} to flight successfully!')
+    else:
+      print(f'No available seats for {person}')
+
+import sys
+
+class Car:
+    def __init__(self,make,model,year):
+        self.make = make
+        self.model = model
+        self.year = year
+    
+    def start_engine(self, prompt):
+        start = input(prompt)
+
+        if (start == "yes") and (self.year >= 2000):
+         print("The car has started successfully!")
+         return start
+
+        elif (start == "no") and (self.year >= 2000):
+            print("You are just in your car sitting down...")
+
+        else:
+            print("The car has stalled.")
+
+    def stop_engine(self, prompt):
+        stop = input(prompt)
+
+        if (stop == "yes"):
+            print("The engine has stopped successfully!")
+
+    def drive(self):
+        print(f"The road looks great. You are now driving your {self.make}, {self.model}")
+   
+car = Car("Hyundai","Sedan", 2024)
+
+def main():
+    options = car.start_engine("Would you like to start your car? (yes/no):")
+
+    while options == "yes":
+        opt2 = input("Would you like to drive the car? (yes/no):")
+
+        if opt2 == "yes":
+            car.drive()
+            last = car.stop_engine("Would you like to stop the engine?(yes/no):")
+
+            if last == "yes":
+                sys.exit()
+
+            else:
+                print("You are still driving....")
+                print("")
+
+        else:
+            print("You are enjoying the comfortable hum of the engine")
+            print("")
+   
+if __name__ == "__main__":
+    main()
