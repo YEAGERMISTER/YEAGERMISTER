@@ -1,0 +1,12 @@
+{
+    "editor.overtypeCursorStyle": "line",
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.cursorStyleInactive": "line",
+    "notebook.navigation.allowNavigateToSurroundingCells": false,
+    "editor.suggest.localityBonus": false,
+    "files.autoSave": "afterDelay",
+    "editor.wordWrap": "off",
+    "editor.hover.sticky": true,
+    "editor.hideCursorInOverviewRuler": false,
+    "editor.wordBreak": "normal"
+}
