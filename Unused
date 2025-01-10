@@ -105,3 +105,134 @@ def main():
    
 if __name__ == "__main__":
     main()
+class Car:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.engine_started = False  # Track engine state
+    
+    def start_engine(self, prompt):
+        start = input(prompt).strip().lower()
+
+        if start == "yes" and self.year >= 2000:
+            self.engine_started = True
+            print("The car has started successfully!")
+        elif start == "no":
+            print("You are just sitting in your car...")
+        else:
+            print("The car has stalled due to an unknown issue.")
+
+        return self.engine_started
+
+    def stop_engine(self, prompt):
+        if not self.engine_started:
+            print("The engine is already off.")
+            return False
+
+        stop = input(prompt).strip().lower()
+        if stop == "yes":
+            self.engine_started = False
+            print("The engine has stopped successfully!")
+            return True
+        else:
+            print("The engine is still running.")
+            return False
+
+    def drive(self):
+        if not self.engine_started:
+            print("You can't drive. The engine is off!")
+            return
+        print(f"The road looks great! You are now driving your {self.make} {self.model}.")
+        
+# Create a Car object
+car = Car("Hyundai", "Sedan", 2024)
+
+def main():
+    # Start the car
+    if not car.start_engine("Would you like to start your car? (yes/no): "):
+        print("Exiting program. Goodbye!")
+        return
+
+    # While engine is on, allow driving
+    while car.engine_started:
+        opt2 = input("Would you like to drive the car? (yes/no): ").strip().lower()
+
+        if opt2 == "yes":
+            car.drive()
+
+            # Ask if the user wants to stop the engine
+            if car.stop_engine("Would you like to stop the engine? (yes/no): "):
+                print("Goodbye! Drive safely next time.")
+                break
+        elif opt2 == "no":
+            print("You are enjoying the comfortable hum of the engine.")
+        else:
+            print("Invalid option. Please answer 'yes' or 'no'.")
+
+
+import sys
+
+#Initial Values
+i = 1
+
+class VendingMachine:
+    def __init__(self,items,prices,amount):
+        self.items = [] #Container for items
+        self.prices = [] #Container for prices
+        self.amount = amount
+        amount = 0.00 #Initial balance for the user
+
+    def display_items(self):
+         for product in self.items:   
+                print(f'{i}. {product} - ${self.prices}')
+                i += 1     
+                return True
+
+    def insert_money(self, amount):
+         cash = int(input("Insert money, (e.g 5 for $5.00):")).strip()
+         amount += float(cash)
+         print(f'You inserted ${float(cash)}.')
+         return amount
+
+    def buy_item(self,items):
+         
+         if not VendingMachine.insert_money():
+              print("You current balance is $0.00. Please insert more money.")
+              raise self.insert_money()
+         inp = input("What would you like to buy? (e.g. 'Chips')").strip().lower()
+         for inp in self.items:
+              if inp in self.items:
+                   print(f'You have bought {inp} for ${self.prices}.')
+                   self.items.remove(inp)
+                   return self.items
+              elif self.prices > self.amount:
+                   print(f'You do not have enough to buy {inp}. Please insert more money!')
+              else:
+                   print(f"{inp} is not currently available")
+                   
+    def return_change(self, amount):
+         change = 0.00
+         if VendingMachine.buy_item():
+              change = self.amount - self.prices
+              amount += change              
+              print(f'Your change is ${change}.')
+              return amount
+         else:
+              print("You have no change.")
+
+    def add_items(self):
+         food = ["chips", "soda", "candy", "water"]
+         money = [1.00,5.00,0.50,1.00]
+
+         self.items.append(food)
+         self.prices.append(money)
+
+def main():
+     for x in range(2):
+          print("Welcome to the Vending Machine!")
+          VendingMachine.display_items()
+     
+
+if __name__ == "__main__":
+     main()  
