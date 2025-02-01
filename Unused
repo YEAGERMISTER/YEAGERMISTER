@@ -236,3 +236,7 @@ def main():
 
 if __name__ == "__main__":
      main()  
+        <form action="{% url 'Tasks:add' %}" method = "Post">
+            <input type="text" name="task" placeholder="New Task">
+            <input type="submit">
+        </form>
