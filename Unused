@@ -236,3 +236,12 @@ def main():
 
 if __name__ == "__main__":
      main()  
+        <form action="{% url 'Tasks:add' %}" method = "Post">
+            <input type="text" name="task" placeholder="New Task">
+            <input type="submit">
+        </form>
+
+            <nav>
+                <a href="{{url_for('Tasks.index')}}">Home</a>
+                <a href="{{url_for('Tasks.add')}}">Add Task</a>
+            </nav>
