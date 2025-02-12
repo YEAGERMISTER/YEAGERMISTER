@@ -1,11 +1,7 @@
-<Doctype! = "Html">
-    <html>
-        <head>
-            <title> Tasks  </title>
-        </head>
+{% extends "Tasks/layout.html" %}
 
-        <body>
-
+{% block content %}
+            <h1>Tasks</h1>
             <ul>
             {% for task in tasks %}
                 <li> {{task}} </li>
@@ -13,3 +9,5 @@
             {% endfor %}
 
             </ul>
+            <a href="{% url 'Tasks:add' %}">Add Task</a>
+{% endblock %}

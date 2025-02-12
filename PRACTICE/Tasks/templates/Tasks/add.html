@@ -1,12 +1,13 @@
-<Doctype! = "html">
-<html>
-    <head>
-        <title>Add Tasks</title>
-    </head>
-
-    <body>
-        
-
-    </body>
+{% extends "Tasks/layout.html" %}
 
 
+{% block content %}
+    <h1>Add Task</h1>
+    <form action="{% url 'Tasks:add' %}" method="post">
+        {% csrf_token %}
+       {{ form }}
+        <button type="submit">Add</button>
+    </form>
+
+    <a href="{% url 'Tasks:index' %}">View all tasks</a>
+{% endblock %}
